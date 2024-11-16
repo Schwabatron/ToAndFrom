@@ -126,19 +126,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2159
-        width: 3840
-        height: 560
+        y: 2160
+        width: 1280
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ad5ee9b574cd2f230800000000000000
-      internalID: 3671238845298304474
+      spriteID: 84ddeb30b610d984782834840d1d1b83
+      internalID: 1885141424
       vertices: []
       indices: 
       edges: []
@@ -147,20 +147,20 @@ TextureImporter:
       name: water animation_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1439
-        width: 3840
-        height: 559
+        x: 1280
+        y: 2160
+        width: 1280
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eada182793933be90800000000000000
-      internalID: -7011197275988709970
+      spriteID: 60f19eb88709be2458739a2585dc34bb
+      internalID: 232070695
       vertices: []
       indices: 
       edges: []
@@ -169,20 +169,20 @@ TextureImporter:
       name: water animation_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 719
-        width: 3840
-        height: 559
+        x: 2560
+        y: 2160
+        width: 1280
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f66d52d113268c60800000000000000
-      internalID: 7819976362426197750
+      spriteID: 7c5b31aa47e490b4980a9760679c4b4b
+      internalID: -1509226668
       vertices: []
       indices: 
       edges: []
@@ -192,19 +192,195 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3840
-        height: 558
+        y: 1440
+        width: 1280
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 60295df6a40bc7d10800000000000000
-      internalID: 2124766957962367494
+      spriteID: 7eb2cc550c624ec4b8ce9c92099276f8
+      internalID: -1464799564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b15e28d448c1f45a0b9be9d4037247
+      internalID: -1177280609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7059527f3d5338b4d981e12ab5a3c593
+      internalID: -42297430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db060be0d48fd2448cdc8e7d197f79f
+      internalID: 1439945111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_7
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be5e3cc1d91b64743a7569cbfce7a33c
+      internalID: 572347290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_8
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71c3889125d8284199c6caf0b7e77c7
+      internalID: 2062036510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9239a20257dd56844889b13c5597a309
+      internalID: 1981412033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36131aedd54328479e4f3d0c46f7abe
+      internalID: -894257403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water animation_11
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3b3fb70c6455c40ab372a4b8c31aef
+      internalID: -671822137
       vertices: []
       indices: 
       edges: []
@@ -213,7 +389,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7496014427f9250468ee849a6865b5f4
     internalID: 0
     vertices: []
     indices: 
@@ -222,7 +398,19 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      water animation_0: 1885141424
+      water animation_1: 232070695
+      water animation_10: -894257403
+      water animation_11: -671822137
+      water animation_2: -1509226668
+      water animation_3: -1464799564
+      water animation_4: -1177280609
+      water animation_5: -42297430
+      water animation_6: 1439945111
+      water animation_7: 572347290
+      water animation_8: 2062036510
+      water animation_9: 1981412033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
