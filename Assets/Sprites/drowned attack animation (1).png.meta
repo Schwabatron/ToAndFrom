@@ -124,6 +124,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -272,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      drowned attack animation (1)_0: -2652252741310591295
+      drowned attack animation (1)_1: 7807291171178366345
+      drowned attack animation (1)_2: 6061568634090807853
+      drowned attack animation (1)_3: -1424644965493524787
+      drowned attack animation (1)_4: -2008457424090233650
+      drowned attack animation (1)_5: -3647557380694342215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
