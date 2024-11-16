@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"{gameObject.name} has died!");
         Destroy(gameObject); // Destroys the enemy game object when it dies
     }
-}
+
 
 
 
