@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 87b60d3e40ac6d04eac5d4b0ff55f1ba
+guid: 28b2f475a59cbeb48a660d6366db6a1c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 518702369831749767
-    second: drowned back walk_0
+      213: -2652252741310591295
+    second: drowned attack animation (1)_0
   - first:
-      213: -8905266644247713246
-    second: drowned back walk_1
+      213: 7807291171178366345
+    second: drowned attack animation (1)_1
+  - first:
+      213: 6061568634090807853
+    second: drowned attack animation (1)_2
+  - first:
+      213: -1424644965493524787
+    second: drowned attack animation (1)_3
+  - first:
+      213: -2008457424090233650
+    second: drowned attack animation (1)_4
+  - first:
+      213: -3647557380694342215
+    second: drowned attack animation (1)_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,19 +112,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: drowned back walk_0
+      name: drowned attack animation (1)_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 106
-        width: 26
-        height: 39
+        x: 6
+        y: 99
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,19 +143,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78889f1ae0dc23700800000000000000
-      internalID: 518702369831749767
+      spriteID: 1ce40ab1f2e413bd0800000000000000
+      internalID: -2652252741310591295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: drowned back walk_1
+      name: drowned attack animation (1)_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 106
-        width: 26
+        x: 57
+        y: 99
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985412494f1195c60800000000000000
+      internalID: 7807291171178366345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drowned attack animation (1)_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 49
+        width: 35
         height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,8 +187,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22aea7f4b232a6480800000000000000
-      internalID: -8905266644247713246
+      spriteID: d22e1a0ae840f1450800000000000000
+      internalID: 6061568634090807853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drowned attack animation (1)_3
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 49
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6b5b4b3f4aa3ce0800000000000000
+      internalID: -1424644965493524787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drowned attack animation (1)_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec40b923d968024e0800000000000000
+      internalID: -2008457424090233650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: drowned attack animation (1)_5
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b50cd943e5416dc0800000000000000
+      internalID: -3647557380694342215
       vertices: []
       indices: 
       edges: []
@@ -185,9 +272,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      drowned back walk_0: 518702369831749767
-      drowned back walk_1: -8905266644247713246
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
