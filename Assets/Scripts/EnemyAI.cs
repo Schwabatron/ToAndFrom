@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public GameObject player;
     public float speed = 5.0f;
     private float distance;
+    private Transform nearestPlayer;
     Animator animator;
 
     void Start()
@@ -15,12 +15,33 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
+        DetectNearestPlayer();
+
+        distance = Vector2.Distance(transform.position, nearestPlayer.transform.position);
+        Vector2 direction = nearestPlayer.transform.position - transform.position;
         
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, nearestPlayer.transform.position, speed * Time.deltaTime);
         
         animator.SetFloat("Move X", direction.x);
         animator.SetFloat("Move Y", direction.y);
+    }
+
+    void DetectNearestPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        float closestDistance = Mathf.Infinity;
+        nearestPlayer = null;
+
+        foreach (GameObject player in players)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                nearestPlayer = player.transform;
+            }
+        }
     }
 }

@@ -13,6 +13,11 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private float _timeUntilSpawn;
 
+    void Awake()
+    {
+        SetTimeUntilSpawn();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
