@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour 
 {
@@ -41,5 +42,16 @@ public class PlayerMovement : MonoBehaviour
    void FixedUpdate()
    {
       rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //Moving character position
+   }
+
+   //Will probably move to EnemyAI script
+   void OnCollisionEnter2D(Collision2D collision)
+   {
+      Debug.Log(collision.gameObject.name);
+
+      if (collision.gameObject.name == "Circle")
+      {
+         SceneManager.LoadScene("Game Over");
+      }
    }
 }
