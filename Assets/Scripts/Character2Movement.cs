@@ -118,7 +118,7 @@ public class Character2Movement : MonoBehaviour
 
         foreach (Collider2D obj in hitObjects)
         {
-            if (obj.CompareTag("Player1"))
+            if (obj.CompareTag("Enemy"))
             {
                 Destroy(obj.gameObject);
             }
