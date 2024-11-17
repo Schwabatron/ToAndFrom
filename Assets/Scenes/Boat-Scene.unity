@@ -499,8 +499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   attackReach: 0.5
-  attackWidth: 0.05
-  attackHeight: 0.05
+  attackWidth: 0.5
+  attackHeight: 0.5
 --- !u!95 &952010944
 Animator:
   serializedVersion: 7
