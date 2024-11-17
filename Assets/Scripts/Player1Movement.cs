@@ -9,12 +9,18 @@ public class PlayerMovement : MonoBehaviour
    private SpriteRenderer spriteRenderer;
    
    Animator animator; //declaring animator 
+   private bool canAttack = true;
+
+   private string character_direction = "right";
+   
+   private float attackCooldown = 1f;
 
    void Start()
    {
       rb = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
       spriteRenderer = GetComponent<SpriteRenderer>();
+      
    }
    
    void Update()
@@ -40,22 +46,78 @@ public class PlayerMovement : MonoBehaviour
 
       if (Input.GetKey(KeyCode.D))
       {
+         character_direction = "right";
          movement.x = 1;
          animator.SetFloat("Move X", movement.x);
          spriteRenderer.flipX = true;
       }
       else if (Input.GetKey(KeyCode.A))
       {
+         character_direction = "left";
          movement.x = -1;
          animator.SetFloat("Move X", movement.x);
          spriteRenderer.flipX = false;
       }
 
       movement.Normalize(); //prevents speedboost when diagnal movement 
+
+      if (Input.GetKey(KeyCode.E) && canAttack)
+      {
+         PerformAttack();
+      }
+      
    }
+   
+   
 
    void FixedUpdate()
    {
       rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //Moving character position
+   }
+
+
+
+   void PerformAttack()
+   {
+      if (!canAttack) return;
+
+      animator.SetTrigger("Attack"); // Trigger the attack animation
+      canAttack = false; // Prevent further attacks until cooldown
+
+      Invoke("ResetAttackCooldown", attackCooldown); // Start cooldown timer
+   }
+      
+   
+   
+   void ExecuteAttack()
+   {
+      Vector2 attackPosition = rb.position;
+
+      switch (character_direction)
+      {
+         case "right":
+            attackPosition += Vector2.right;
+            break;
+         case "left":
+            attackPosition += Vector2.left;
+            break;
+      }
+
+      Collider2D[] hitObjects = Physics2D.OverlapBoxAll(attackPosition, new Vector2(1, 1), 0);
+
+      foreach (Collider2D obj in hitObjects)
+      {
+         if (obj.CompareTag("Player"))
+         {
+            Destroy(obj.gameObject);
+         }
+      }
+
+      Debug.Log("Attack executed at " + attackPosition);
+   }
+
+   void ResetAttackCooldown()
+   {
+      canAttack = true; 
    }
 }
