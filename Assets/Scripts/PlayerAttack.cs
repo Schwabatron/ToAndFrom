@@ -5,6 +5,7 @@ public class PlayerAttack : MonoBehaviour
     public float attackDamage = 20f; // Player's attack damage
     public float attackRange = 1f; // Range of the player's attack
 
+    [SerializeField] private AudioClip attackSoundClip;
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     enemyHealth.TakeDamage(attackDamage);
+                    AudioSource.PlayClipAtPoint(attackSoundClip, transform.position, 1f);
                 }
             }
         }

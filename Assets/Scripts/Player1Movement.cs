@@ -18,63 +18,80 @@ public class PlayerMovement : MonoBehaviour
    private float attackCooldown = 1f;
    public float attackReach = .5f;    // Distance from the player to the attack area
    public float attackWidth = .05f;      // Width of the attack area
-   public float attackHeight = .05f;   
+   public float attackHeight = .05f;
+    [SerializeField] private AudioClip walkingSoundClip;
+    private AudioSource walkingSource;
 
    void Start()
    {
       rb = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
       spriteRenderer = GetComponent<SpriteRenderer>();
+        walkingSource = GetComponent<AudioSource>();
    }
-   
-   void Update()
-   {
-      //if (isAttacking)
-        // return; // Prevent movement during attack
 
-      // Reset movement
-      movement.x = 0;
-      movement.y = 0;
-      
-      animator.SetFloat("Move X", movement.x);
-      animator.SetFloat("Move Y", movement.y);
-      
-      // Handle input
-      if (Input.GetKey(KeyCode.W))
-      {
-         movement.y = 1;
-         animator.SetFloat("Move Y", movement.y);
-      }
-      else if (Input.GetKey(KeyCode.S))
-      {
-         movement.y = -1;
-         animator.SetFloat("Move Y", movement.y);
-      }
+    void Update()
+    {
+        // Reset movement
+        movement.x = 0;
+        movement.y = 0;
 
-      if (Input.GetKey(KeyCode.D))
-      {
-         character_direction = "right";
-         movement.x = 1;
-         animator.SetFloat("Move X", movement.x);
-         spriteRenderer.flipX = true;
-      }
-      else if (Input.GetKey(KeyCode.A))
-      {
-         character_direction = "left";
-         movement.x = -1;
-         animator.SetFloat("Move X", movement.x);
-         spriteRenderer.flipX = false;
-      }
+        animator.SetFloat("Move X", movement.x);
+        animator.SetFloat("Move Y", movement.y);
 
-      movement.Normalize(); // Prevents speed boost when moving diagonally
+        // Handle input
+        if (Input.GetKey(KeyCode.W))
+        {
+            movement.y = 1;
+            animator.SetFloat("Move Y", movement.y);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            movement.y = -1;
+            animator.SetFloat("Move Y", movement.y);
+        }
 
-      if (Input.GetKey(KeyCode.E) && canAttack)
-      {
-         PerformAttack();
-      }
-   }
-   
-   void FixedUpdate()
+        if (Input.GetKey(KeyCode.D))
+        {
+            character_direction = "right";
+            movement.x = 1;
+            animator.SetFloat("Move X", movement.x);
+            spriteRenderer.flipX = true;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            character_direction = "left";
+            movement.x = -1;
+            animator.SetFloat("Move X", movement.x);
+            spriteRenderer.flipX = false;
+        }
+
+        movement.Normalize(); // Prevents speed boost when moving diagonally
+
+        // Play walking sound if the player is moving
+        if (movement != Vector2.zero)
+        {
+            if (!walkingSource.isPlaying)
+            {
+                walkingSource.clip = walkingSoundClip;
+                walkingSource.loop = true;
+                walkingSource.Play();
+            }
+        }
+        else
+        {
+            if (walkingSource.isPlaying && walkingSource.clip == walkingSoundClip)
+            {
+                walkingSource.Stop();
+            }
+        }
+
+        if (Input.GetKey(KeyCode.E) && canAttack)
+        {
+            PerformAttack();
+        }
+    }
+    void FixedUpdate()
    {
       
       rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);

@@ -9,34 +9,36 @@ public class Character2Movement : MonoBehaviour
     private Animator animator; // Animator component
 
     private bool canAttack = true;
-   
+
     private Vector2 attackDirection;   // Attack direction vector
     private Vector2 attackPosition;    // Attack position
-    //public float attackRange = 1f;   // Attack range
 
     private string character_direction = "right";
     private float attackCooldown = 1f;
     public float attackReach = .5f;    // Distance from the player to the attack area
-    public float attackWidth = .05f;      // Width of the attack area
-    public float attackHeight = .05f;  
+    public float attackWidth = .05f;  // Width of the attack area
+    public float attackHeight = .05f;
+
+    [SerializeField] private AudioClip walkingSoundClip;
+    private AudioSource walkingSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        walkingSource = GetComponent<AudioSource>();
     }
-   
+
     void Update()
     {
-
         // Reset movement
         movement.x = 0;
         movement.y = 0;
-        
+
         animator.SetFloat("Move X", movement.x);
         animator.SetFloat("Move Y", movement.y);
-        
+
         // Get input from IJKL keys
         if (Input.GetKey(KeyCode.I))
         {
@@ -66,6 +68,24 @@ public class Character2Movement : MonoBehaviour
 
         movement.Normalize(); // Prevents speed boost when moving diagonally
 
+        // Play walking sound if the character is moving
+        if (movement != Vector2.zero)
+        {
+            if (!walkingSource.isPlaying)
+            {
+                walkingSource.clip = walkingSoundClip;
+                walkingSource.loop = true;
+                walkingSource.Play();
+            }
+        }
+        else
+        {
+            if (walkingSource.isPlaying && walkingSource.clip == walkingSoundClip)
+            {
+                walkingSource.Stop();
+            }
+        }
+
         if (Input.GetKey(KeyCode.O) && canAttack)
         {
             PerformAttack();
@@ -81,10 +101,9 @@ public class Character2Movement : MonoBehaviour
     {
         if (!canAttack) return;
 
-       // isAttacking = true; // Prevent movement during attack
-
         // Store attack position and direction
         attackPosition = rb.position;
+
         switch (character_direction)
         {
             case "right":
