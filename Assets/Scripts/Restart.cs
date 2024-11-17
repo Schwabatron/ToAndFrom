@@ -7,6 +7,6 @@ public class Restart : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene("Boat-Scene");
+        SceneManager.LoadScene("Death");
     }
 }

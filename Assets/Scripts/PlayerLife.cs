@@ -22,7 +22,7 @@ public class PlayerLife : MonoBehaviour
 
       if (!anyPlayersAlive)
       {
-         SceneManager.LoadScene("Game Over");
+         SceneManager.LoadScene("Death");
       }
    }
 

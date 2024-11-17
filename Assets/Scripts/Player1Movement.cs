@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
-   public float moveSpeed = 4f; // Default move speed
+   public float moveSpeed = 1f; // Default move speed
    private Rigidbody2D rb; // Rigidbody component
    private Vector2 movement; // Movement vector
    
