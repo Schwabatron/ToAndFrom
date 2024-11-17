@@ -140,7 +140,11 @@ public class PlayerMovement : MonoBehaviour
 
       foreach (Collider2D obj in hitObjects)
       {
-         if (obj.CompareTag("Player2")) // Replace "Enemy" with the appropriate tag
+         if (obj.CompareTag("Player")) // Replace "Enemy" with the appropriate tag
+         {
+            Destroy(obj.gameObject);
+         }
+         if (obj.CompareTag("Enemy"))
          {
             Destroy(obj.gameObject);
          }
