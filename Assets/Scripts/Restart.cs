@@ -7,6 +7,6 @@ public class Restart : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene("GameLevel");
+        SceneManager.LoadScene("Boat-Scene");
     }
 }

@@ -18,12 +18,6 @@ public class EnemySpawnPoint : MonoBehaviour
         SetTimeUntilSpawn();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +25,10 @@ public class EnemySpawnPoint : MonoBehaviour
 
         if (_timeUntilSpawn <= 0)
         {
+            GameObject spawnedEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+
             Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+            _enemyPrefab.layer = 3;
             SetTimeUntilSpawn();
         }
     }
