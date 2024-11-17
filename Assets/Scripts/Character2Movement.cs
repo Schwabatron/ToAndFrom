@@ -12,10 +12,13 @@ public class Character2Movement : MonoBehaviour
     private bool isAttacking = false; // Flag to indicate if attacking
     private Vector2 attackDirection;   // Attack direction vector
     private Vector2 attackPosition;    // Attack position
-    public float attackRange = 0.1f;   // Attack range
+    //public float attackRange = 1f;   // Attack range
 
     private string character_direction = "right";
     private float attackCooldown = 1f;
+    public float attackReach = .5f;    // Distance from the player to the attack area
+    public float attackWidth = .05f;      // Width of the attack area
+    public float attackHeight = .05f;  
 
     void Start()
     {
@@ -26,8 +29,8 @@ public class Character2Movement : MonoBehaviour
    
     void Update()
     {
-        if (isAttacking)
-            return; // Prevent movement during attack
+        //if (isAttacking)
+          //  return; // Prevent movement during attack
 
         // Reset movement
         movement.x = 0;
@@ -100,7 +103,7 @@ public class Character2Movement : MonoBehaviour
                 break;
         }
 
-        attackPosition += attackDirection * attackRange;
+        attackPosition += attackDirection * attackReach;
 
         animator.SetTrigger("Attack"); // Trigger the attack animation
         canAttack = false; // Prevent further attacks until cooldown
@@ -114,13 +117,13 @@ public class Character2Movement : MonoBehaviour
         // Use the stored attackPosition and attackRange
         Collider2D[] hitObjects = Physics2D.OverlapBoxAll(
             attackPosition,
-            new Vector2(attackRange, attackRange),
+            new Vector2(attackWidth, attackHeight),
             0
         );
 
         foreach (Collider2D obj in hitObjects)
         {
-            if (obj.CompareTag("Player"))
+            if (obj.CompareTag("Player1"))
             {
                 Destroy(obj.gameObject);
             }
@@ -132,6 +135,6 @@ public class Character2Movement : MonoBehaviour
     void ResetAttackCooldown()
     {
         canAttack = true;
-        isAttacking = false; // Re-enable movement
+        //isAttacking = false; // Re-enable movement
     }
 }
