@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      zombie climb ani (1)_0: -6119843693811898481
+      zombie climb ani (1)_1: 6510107930954910434
+      zombie climb ani (1)_2: 772663774164630377
+      zombie climb ani (1)_3: -3593556152546960084
+      zombie climb ani (1)_4: -4117134841835996320
+      zombie climb ani (1)_5: -5318208327351134366
+      zombie climb ani (1)_6: -311799523660584093
+      zombie climb ani (1)_7: 1540024246141961197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
