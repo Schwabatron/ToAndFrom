@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 925223960}
   m_Layer: 0
   m_Name: Character 1
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,6 +269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  attackReach: 0.5
+  attackWidth: 0.5
+  attackHeight: 0.5
 --- !u!50 &925223959
 Rigidbody2D:
   serializedVersion: 5
@@ -334,7 +337,7 @@ GameObject:
   - component: {fileID: 952010944}
   m_Layer: 0
   m_Name: Character 2
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,6 +498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  attackReach: 0.5
+  attackWidth: 0.05
+  attackHeight: 0.05
 --- !u!95 &952010944
 Animator:
   serializedVersion: 7

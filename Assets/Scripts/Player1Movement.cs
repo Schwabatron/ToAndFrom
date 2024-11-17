@@ -16,7 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
    private string character_direction = "right";
    private float attackCooldown = 1f;
-   public float attackRange = 0.1f;
+   public float attackReach = .5f;    // Distance from the player to the attack area
+   public float attackWidth = .05f;      // Width of the attack area
+   public float attackHeight = .05f;   
 
    void Start()
    {
@@ -27,8 +29,8 @@ public class PlayerMovement : MonoBehaviour
    
    void Update()
    {
-      if (isAttacking)
-         return; // Prevent movement during attack
+      //if (isAttacking)
+        // return; // Prevent movement during attack
 
       // Reset movement
       movement.x = 0;
@@ -85,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
       if (!canAttack) return;
 
       // Prevent movement during attack
-      isAttacking = true;
+      //isAttacking = true;
 
       // Store attack position and direction
       attackPosition = rb.position;
@@ -103,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
             break;
       }
 
-      attackPosition += attackDirection * attackRange;
+      attackPosition += attackDirection * attackReach;
+      Debug.Log( attackPosition);
 
       animator.SetTrigger("Attack");
       canAttack = false;
@@ -116,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
       // Use the stored attackPosition and attackRange
       Collider2D[] hitObjects = Physics2D.OverlapBoxAll(
          attackPosition,
-         new Vector2(attackRange, attackRange),
+         new Vector2(attackWidth, attackHeight),
          0
       );
 
       foreach (Collider2D obj in hitObjects)
       {
-         if (obj.CompareTag("Player")) // Replace "Enemy" with the appropriate tag
+         if (obj.CompareTag("Player2")) // Replace "Enemy" with the appropriate tag
          {
             Destroy(obj.gameObject);
          }
@@ -134,6 +137,15 @@ public class PlayerMovement : MonoBehaviour
    void ResetAttackCooldown()
    {
       canAttack = true;
-      isAttacking = false; // Re-enable movement
+      //isAttacking = false; // Re-enable movement
+   }
+   
+   void OnDrawGizmos()
+   {
+      if (Application.isPlaying && canAttack == false) // Only show when attacking
+      {
+         Gizmos.color = Color.red;
+         Gizmos.DrawWireCube(attackPosition, new Vector3(attackWidth, attackHeight, 0));
+      }
    }
 }
