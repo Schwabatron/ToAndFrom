@@ -58,8 +58,33 @@ public class PlayerMovement : MonoBehaviour
       rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //Moving character position
    }
 
+   //Checks if other players are alive and have the PlayerLife.life boolean set to true
+   //If not, loads "Game Over" scene.
+   //May move to enemy AI instead
+   void CheckForGameOver()
+   {
+      GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+      bool anyPlayersAlive = false;
+
+      foreach (GameObject player in players)
+      {
+         PlayerLife playerLife = player.GetComponent<PlayerLife>();
+         if (playerLife != null && playerLife.life == true)
+         {
+            anyPlayersAlive = true;
+            break;
+         }
+      }
+
+      if (!anyPlayersAlive)
+      {
+         SceneManager.LoadScene("Game Over");
+      }
+   }
+
    //Will probably move to EnemyAI script
    //Testing for collision, releads scene on collision with object of name "circle"
+   //Remove before game is finalized
    void OnCollisionEnter2D(Collision2D collision)
    {
       Debug.Log(collision.gameObject.name);
