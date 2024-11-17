@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boat-Scene.unity
     guid: 60e729d0ca4474220b2841d465f97611
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: abc7567bd5293664aac9287712d0e67c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

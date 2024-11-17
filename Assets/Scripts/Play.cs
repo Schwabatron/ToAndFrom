@@ -22,4 +22,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Pressed Button");
         SceneManager.LoadSceneAsync("Settings");
     }
+        public void Home()
+    {
+        Debug.Log("Pressed Button");
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
 }
