@@ -9,7 +9,7 @@ public class Character2Movement : MonoBehaviour
     private Animator animator; // Animator component
 
     private bool canAttack = true;
-    private bool isAttacking = false; // Flag to indicate if attacking
+   
     private Vector2 attackDirection;   // Attack direction vector
     private Vector2 attackPosition;    // Attack position
     //public float attackRange = 1f;   // Attack range
@@ -29,8 +29,6 @@ public class Character2Movement : MonoBehaviour
    
     void Update()
     {
-        //if (isAttacking)
-          //  return; // Prevent movement during attack
 
         // Reset movement
         movement.x = 0;
@@ -76,9 +74,6 @@ public class Character2Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isAttacking)
-            return; // Prevent movement during attack
-
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -86,7 +81,7 @@ public class Character2Movement : MonoBehaviour
     {
         if (!canAttack) return;
 
-        isAttacking = true; // Prevent movement during attack
+       // isAttacking = true; // Prevent movement during attack
 
         // Store attack position and direction
         attackPosition = rb.position;
@@ -135,6 +130,5 @@ public class Character2Movement : MonoBehaviour
     void ResetAttackCooldown()
     {
         canAttack = true;
-        //isAttacking = false; // Re-enable movement
     }
 }

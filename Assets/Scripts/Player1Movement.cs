@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
    private Animator animator; // Animator component
    
    private bool canAttack = true;
-   private bool isAttacking = false; // Declare isAttacking
+  //private bool isAttacking = false; // Declare isAttacking
    private Vector2 attackDirection;   // Declare attackDirection
    private Vector2 attackPosition;    // Declare attackPosition
 
@@ -76,9 +76,7 @@ public class PlayerMovement : MonoBehaviour
    
    void FixedUpdate()
    {
-      if (isAttacking)
-         return; // Prevent movement during attack
-
+      
       rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
    }
 
