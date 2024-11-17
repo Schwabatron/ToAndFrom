@@ -27,4 +27,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Pressed Button");
         SceneManager.LoadSceneAsync("Main Menu");
     }
+        public void Controls()
+    {
+    Debug.Log("Pressed Button");
+    SceneManager.LoadSceneAsync("Controls");
+    }
 }

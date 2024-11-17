@@ -749,7 +749,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 2666ebd356006ba43bd6d8e9e6c4faee, type: 3}
   m_Resource: {fileID: 8300000, guid: 2666ebd356006ba43bd6d8e9e6c4faee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.503
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
