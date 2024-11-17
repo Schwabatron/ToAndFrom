@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Character2Movement : MonoBehaviour
 {
-    public float moveSpeed = 4f; //set default move speed for the player opon a key press
-    private Rigidbody2D rb; //rigidbody(the player)
-    private Vector2 movement; // 2d vector movement
+    public float moveSpeed = 4f; // Default move speed
+    private Rigidbody2D rb; // Rigidbody component
+    private Vector2 movement; // Movement vector
     private SpriteRenderer spriteRenderer;
-    Animator animator; //declaring animator 
+    private Animator animator; // Animator component
+
     private bool canAttack = true;
+    private bool isAttacking = false; // Flag to indicate if attacking
+    private Vector2 attackDirection;   // Attack direction vector
+    private Vector2 attackPosition;    // Attack position
+    public float attackRange = 0.1f;   // Attack range
 
     private string character_direction = "right";
-    
     private float attackCooldown = 1f;
 
     void Start()
@@ -22,13 +26,17 @@ public class Character2Movement : MonoBehaviour
    
     void Update()
     {
-        // Get input from IJKL keys
+        if (isAttacking)
+            return; // Prevent movement during attack
+
+        // Reset movement
         movement.x = 0;
         movement.y = 0;
         
         animator.SetFloat("Move X", movement.x);
         animator.SetFloat("Move Y", movement.y);
         
+        // Get input from IJKL keys
         if (Input.GetKey(KeyCode.I))
         {
             movement.y = 1;
@@ -55,7 +63,7 @@ public class Character2Movement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        movement.Normalize(); //prevents speedboost when diagonal movement 
+        movement.Normalize(); // Prevents speed boost when moving diagonally
 
         if (Input.GetKey(KeyCode.O) && canAttack)
         {
@@ -65,34 +73,50 @@ public class Character2Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //Moving character position
+        if (isAttacking)
+            return; // Prevent movement during attack
+
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     void PerformAttack()
     {
         if (!canAttack) return;
 
+        isAttacking = true; // Prevent movement during attack
+
+        // Store attack position and direction
+        attackPosition = rb.position;
+        switch (character_direction)
+        {
+            case "right":
+                attackDirection = Vector2.right;
+                break;
+            case "left":
+                attackDirection = Vector2.left;
+                break;
+            default:
+                attackDirection = Vector2.zero;
+                break;
+        }
+
+        attackPosition += attackDirection * attackRange;
+
         animator.SetTrigger("Attack"); // Trigger the attack animation
         canAttack = false; // Prevent further attacks until cooldown
 
+        // Note: Call ExecuteAttack() via an animation event at the appropriate frame
         Invoke("ResetAttackCooldown", attackCooldown); // Start cooldown timer
     }
 
     public void ExecuteAttack()
     {
-        Vector2 attackPosition = rb.position;
-
-        switch (character_direction)
-        {
-            case "right":
-                attackPosition += Vector2.right;
-                break;
-            case "left":
-                attackPosition += Vector2.left;
-                break;
-        }
-
-        Collider2D[] hitObjects = Physics2D.OverlapBoxAll(attackPosition, new Vector2(1, 1), 0);
+        // Use the stored attackPosition and attackRange
+        Collider2D[] hitObjects = Physics2D.OverlapBoxAll(
+            attackPosition,
+            new Vector2(attackRange, attackRange),
+            0
+        );
 
         foreach (Collider2D obj in hitObjects)
         {
@@ -107,6 +131,7 @@ public class Character2Movement : MonoBehaviour
 
     void ResetAttackCooldown()
     {
-        canAttack = true; 
+        canAttack = true;
+        isAttacking = false; // Re-enable movement
     }
 }

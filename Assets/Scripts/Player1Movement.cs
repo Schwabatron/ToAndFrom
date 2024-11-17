@@ -2,37 +2,42 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
-   public float moveSpeed = 4f; //set default move speed for the player opon a key press
-   private Rigidbody2D rb; //rigidbody(the player)
-   private Vector2 movement; // 2d vector movement
+   public float moveSpeed = 4f; // Default move speed
+   private Rigidbody2D rb; // Rigidbody component
+   private Vector2 movement; // Movement vector
    
    private SpriteRenderer spriteRenderer;
+   private Animator animator; // Animator component
    
-   Animator animator; //declaring animator 
    private bool canAttack = true;
+   private bool isAttacking = false; // Declare isAttacking
+   private Vector2 attackDirection;   // Declare attackDirection
+   private Vector2 attackPosition;    // Declare attackPosition
 
    private string character_direction = "right";
-   
    private float attackCooldown = 1f;
+   public float attackRange = 0.1f;
 
    void Start()
    {
       rb = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
       spriteRenderer = GetComponent<SpriteRenderer>();
-      
    }
    
    void Update()
    {
-      // Get input from WASD keys
+      if (isAttacking)
+         return; // Prevent movement during attack
+
+      // Reset movement
       movement.x = 0;
       movement.y = 0;
       
       animator.SetFloat("Move X", movement.x);
       animator.SetFloat("Move Y", movement.y);
       
-
+      // Handle input
       if (Input.GetKey(KeyCode.W))
       {
          movement.y = 1;
@@ -59,55 +64,65 @@ public class PlayerMovement : MonoBehaviour
          spriteRenderer.flipX = false;
       }
 
-      movement.Normalize(); //prevents speedboost when diagnal movement 
+      movement.Normalize(); // Prevents speed boost when moving diagonally
 
       if (Input.GetKey(KeyCode.E) && canAttack)
       {
          PerformAttack();
       }
-      
    }
    
-   
-
    void FixedUpdate()
    {
-      rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime); //Moving character position
+      if (isAttacking)
+         return; // Prevent movement during attack
+
+      rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
    }
-
-
 
    void PerformAttack()
    {
       if (!canAttack) return;
 
-      animator.SetTrigger("Attack"); // Trigger the attack animation
-      canAttack = false; // Prevent further attacks until cooldown
+      // Prevent movement during attack
+      isAttacking = true;
 
-      Invoke("ResetAttackCooldown", attackCooldown); // Start cooldown timer
-   }
-      
-   
-   
-   void ExecuteAttack()
-   {
-      Vector2 attackPosition = rb.position;
+      // Store attack position and direction
+      attackPosition = rb.position;
 
       switch (character_direction)
       {
          case "right":
-            attackPosition += Vector2.right;
+            attackDirection = Vector2.right;
             break;
          case "left":
-            attackPosition += Vector2.left;
+            attackDirection = Vector2.left;
+            break;
+         default:
+            attackDirection = Vector2.zero; // Default to zero if undefined
             break;
       }
 
-      Collider2D[] hitObjects = Physics2D.OverlapBoxAll(attackPosition, new Vector2(1, 1), 0);
+      attackPosition += attackDirection * attackRange;
+
+      animator.SetTrigger("Attack");
+      canAttack = false;
+
+      Invoke("ResetAttackCooldown", attackCooldown);
+   }
+   
+   void ExecuteAttack()
+   {
+      // Use the stored attackPosition and attackRange
+      Collider2D[] hitObjects = Physics2D.OverlapBoxAll(
+         attackPosition,
+         new Vector2(attackRange, attackRange),
+         0
+      );
 
       foreach (Collider2D obj in hitObjects)
       {
-         if (obj.CompareTag("Player"))
+         if (obj.CompareTag("Player")) // Replace "Enemy" with the appropriate tag
          {
             Destroy(obj.gameObject);
          }
@@ -118,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
    void ResetAttackCooldown()
    {
-      canAttack = true; 
+      canAttack = true;
+      isAttacking = false; // Re-enable movement
    }
 }
