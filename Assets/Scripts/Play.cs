@@ -10,4 +10,16 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Pressed Button");
         SceneManager.LoadSceneAsync("Boat-Scene");
     }
+
+     public void Credits()
+    {
+        Debug.Log("Pressed Button");
+        SceneManager.LoadSceneAsync("Credits");
+    }
+
+     public void Settings()
+    {
+        Debug.Log("Pressed Button");
+        SceneManager.LoadSceneAsync("Settings");
+    }
 }
